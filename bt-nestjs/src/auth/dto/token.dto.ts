@@ -1,14 +1,21 @@
 import { IsEmail, IsString, MaxLength, MinLength } from 'class-validator';
 
-// Dùng nội bộ khi tạo user (được AuthService gọi sau khi đã kiểm tra ở tầng auth).
-export class CreateUserDto {
+// Dùng chung cho các endpoint chỉ nhận một token mờ (refresh / logout / verify email).
+export class TokenDto {
   @IsString()
-  @MinLength(2, { message: 'Tên hiển thị phải có ít nhất 2 ký tự' })
-  @MaxLength(50, { message: 'Tên hiển thị tối đa 50 ký tự' })
-  name: string;
+  @MinLength(1)
+  token: string;
+}
 
+export class ForgotPasswordDto {
   @IsEmail({}, { message: 'Email không đúng định dạng' })
   email: string;
+}
+
+export class ResetPasswordDto {
+  @IsString()
+  @MinLength(1)
+  token: string;
 
   @IsString()
   @MinLength(8, { message: 'Mật khẩu phải có ít nhất 8 ký tự' })

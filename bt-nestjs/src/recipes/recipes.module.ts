@@ -8,5 +8,6 @@ import { Recipe, RecipeSchema } from './schemas/recipe.schema';
   imports: [MongooseModule.forFeature([{ name: Recipe.name, schema: RecipeSchema }])],
   controllers: [RecipesController],
   providers: [RecipesService],
+  exports: [RecipesService],
 })
 export class RecipesModule {}

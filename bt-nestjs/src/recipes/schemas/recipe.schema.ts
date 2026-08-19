@@ -38,6 +38,9 @@ export class Recipe {
   @Prop({ required: true })
   imgUrl: string;
 
+  @Prop({ required: true, default: 0 })
+  price: number;
+
   @Prop({ default: false })
   isFavorite: boolean;
 

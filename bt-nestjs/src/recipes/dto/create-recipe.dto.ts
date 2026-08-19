@@ -7,6 +7,7 @@ import {
   IsNumber,
   IsOptional,
   IsString,
+  Min,
   ValidateNested,
 } from 'class-validator';
 
@@ -41,6 +42,10 @@ export class CreateRecipeDto {
   @IsNotEmpty()
   imgUrl: string;
 
+  @IsNumber()
+  @Min(0)
+  price: number;
+
   @IsOptional()
   @IsBoolean()
   isFavorite?: boolean;
@@ -50,6 +55,8 @@ export class CreateRecipeDto {
   @Type(() => IngredientDto)
   ingredients: IngredientDto[];
 
+  // Không bắt buộc client gửi: service luôn ép authorEmail = email của user đang đăng nhập.
+  @IsOptional()
   @IsEmail()
-  authorEmail: string;
+  authorEmail?: string;
 }

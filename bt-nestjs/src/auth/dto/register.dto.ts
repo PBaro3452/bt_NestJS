@@ -1,7 +1,6 @@
 import { IsEmail, IsString, MaxLength, MinLength } from 'class-validator';
 
-// Dùng nội bộ khi tạo user (được AuthService gọi sau khi đã kiểm tra ở tầng auth).
-export class CreateUserDto {
+export class RegisterDto {
   @IsString()
   @MinLength(2, { message: 'Tên hiển thị phải có ít nhất 2 ký tự' })
   @MaxLength(50, { message: 'Tên hiển thị tối đa 50 ký tự' })
